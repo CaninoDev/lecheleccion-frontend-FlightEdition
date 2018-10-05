@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 
+import {News} from './news'
+
 class App extends Component {
-  constructor() {
-    super(props)
-
+    render() {
+        return (
+            <News/>
+        )
   }
-
 }
+
+export default App

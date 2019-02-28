@@ -1,11 +1,3 @@
-import React, { Component } from 'react'
+import NewsContainer from './container'
 
-class News extends Component {
-    render () {
-        return (
-            <h1>News</h1>
-        )
-    }
-}
-
-export default News
+export default NewsContainer

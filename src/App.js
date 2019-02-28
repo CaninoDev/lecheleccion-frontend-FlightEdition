@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 
-import {News} from './news'
+import NewsContainer from './news'
 
 class App extends Component {
-    render() {
-        return (
-            <News/>
-        )
+  render () {
+    return (
+      <NewsContainer/>
+    )
   }
 }
 

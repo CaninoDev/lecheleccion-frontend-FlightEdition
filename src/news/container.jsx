@@ -1,39 +1,39 @@
-import React, { Component } from 'react'
-import Grid from '@material-ui/core/Grid'
-import openSocket from 'socket.io-client'
+import React, { Component } from "react"
+import Button from "@material-ui/core/Button"
+import Grid from "@material-ui/core/Grid"
 
-import NewsComponent from 'news'
+import NewsComponent from "news"
 
 export default class NewsContainer extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       articles: []
     }
+    this.socket = new WebSocket("ws://localhost:3001/api/cable");
   }
 
-  componentDidMount () {
-      this.setState({
-          articlesChannel: this.createSocket()
-      })
-
-  }
-
-  createSocket = () => {
-      let socket = openSocket('http://localhost:3001/api/v1/cable')
-      socket.emit('connect', {})
-      socket.on('articles', (data) => this.setState({
-          articles: data
-      }))
+  componentDidMount() {
+    this.socket.onopen = () => {}
+    this.socket.onerror = function(error) {
+      console.log("WebSocket Error: " + error);
     }
-    
-  render () {
-    const { articles } = this.state
+    this.socket.onmessage = evt => this.setState({
+      articles: JSON.parse(evt.data)
+    })
+  }
+  
+  com
+
+  render() {
+    const { articles } = this.state;
     return (
-      <Grid item xs={9}>
-      <h1>{articles.length}</h1>
-        { (articles.length > 0) && <NewsComponent news={articles} /> }
-      </Grid>
+      <React.Fragment>
+        <Button title="fetch" onClick={() => this.socket.send("")}>Fetch</Button>
+        <Grid item xs={9}>
+          {articles.length > 0 && <NewsComponent news={articles} />}
+        </Grid>
+      </React.Fragment>
     )
   }
 }

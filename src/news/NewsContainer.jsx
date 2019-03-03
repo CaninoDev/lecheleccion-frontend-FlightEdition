@@ -1,39 +1,28 @@
-import React, { Component } from "react"
-import Button from "@material-ui/core/Button"
-import Grid from "@material-ui/core/Grid"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { NewsComponent } from 'news'
 
-import NewsComponent from "news"
-
-export default class NewsContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      articles: []
-    }
-    this.socket = new WebSocket("ws://localhost:3001/api/cable");
-  }
-
-  componentDidMount() {
-    this.socket.onopen = () => {}
-    this.socket.onerror = function(error) {
-      console.log("WebSocket Error: " + error);
-    }
-    this.socket.onmessage = evt => this.setState({
-      articles: JSON.parse(evt.data)
-    })
-  }
-  
-  com
+class NewsContainer extends Component {
 
   render() {
-    const { articles } = this.state;
     return (
-      <React.Fragment>
-        <Button title="fetch" onClick={() => this.socket.send("")}>Fetch</Button>
-        <Grid item xs={9}>
-          {articles.length > 0 && <NewsComponent news={articles} />}
-        </Grid>
-      </React.Fragment>
+        <React.Fragment>
+          { (!this.props.loading) && <NewsComponent article={this.props.article} /> }
+        </React.Fragment>
     )
   }
 }
+
+const mapStateToProps = state => ({
+  loading: state.news.loading,
+  article: state.news.data
+})
+
+NewsContainer.propTypes = {
+  article: PropTypes.object,
+  loading: PropTypes.bool,
+}
+
+export default connect(mapStateToProps, null)(NewsContainer)
+

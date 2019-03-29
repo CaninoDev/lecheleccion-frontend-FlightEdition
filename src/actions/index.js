@@ -1,1 +1,1 @@
-export fetchNews from './news'
+export { default as fetchNews } from './news'

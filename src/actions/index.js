@@ -1,3 +1,1 @@
-export { receivedNews } from './news'
-export { failureNews }from './news'
-export { requestNews } from './news'
+export { default as fetchNews } from './news'

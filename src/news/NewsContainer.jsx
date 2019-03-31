@@ -2,13 +2,19 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { NewsComponent } from 'news'
+import { fetchNews } from 'actions'
 
 class NewsContainer extends Component {
+  componentDidMount() {
+    this.props.fetchNews()
+  }
 
   render() {
+    const { articles } = this.props
+
     return (
         <React.Fragment>
-          { (!this.props.loading) && <NewsComponent article={this.props.article} /> }
+          { (!this.props.loading) && articles.map(article => <NewsComponent article={article} key={article.ID} />) }
         </React.Fragment>
     )
   }
@@ -16,13 +22,20 @@ class NewsContainer extends Component {
 
 const mapStateToProps = state => ({
   loading: state.news.loading,
-  article: state.news.data
+  articles: state.news.data
 })
 
+const mapDispatchToProps = dispatch => ({
+  fetchNews: () => dispatch(fetchNews())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer)
+
 NewsContainer.propTypes = {
-  article: PropTypes.object,
+  articles: PropTypes.oneOfType([
+     PropTypes.array,
+     PropTypes.object
+     ]),
   loading: PropTypes.bool,
+  fetchNews: PropTypes.func
 }
-
-export default connect(mapStateToProps, null)(NewsContainer)
-

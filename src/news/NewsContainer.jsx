@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
+import Grid from '@material-ui/core/Grid'
 import { connect } from 'react-redux'
 import { NewsComponent } from 'news'
 import { fetchNews } from 'actions'
@@ -14,7 +16,9 @@ class NewsContainer extends Component {
 
     return (
         <React.Fragment>
+          <Grid container spacing={16}>
           { (!this.props.loading) && articles.map(article => <NewsComponent article={article} key={article.ID} />) }
+          </Grid>
         </React.Fragment>
     )
   }

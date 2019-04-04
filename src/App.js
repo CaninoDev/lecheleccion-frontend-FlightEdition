@@ -8,8 +8,8 @@ class App extends Component {
   render() {
     return (
        <React.Fragment>
-         <BiasContainer/>
          <NewsContainer/>
+         <BiasContainer/>
        </React.Fragment>
     )
   }

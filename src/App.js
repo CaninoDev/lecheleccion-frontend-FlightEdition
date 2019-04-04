@@ -1,11 +1,16 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
-import { NewsContainer } from 'news'
+import {NewsContainer} from 'news'
+import {BiasContainer} from 'bias'
+
 
 class App extends Component {
-  render () {
+  render() {
     return (
-      <NewsContainer/>
+       <React.Fragment>
+         <BiasContainer/>
+         <NewsContainer/>
+       </React.Fragment>
     )
   }
 }

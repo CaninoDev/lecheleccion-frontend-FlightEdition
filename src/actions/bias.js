@@ -21,11 +21,12 @@ function failureBias (error) {
   }
 }
 
-export default function ( articleID ) {
+export default function (articleID) {
   return dispatch => {
     dispatch(requestBias)
     return fetch(`/api/bias/${articleID}`)
-       .then(response => response.json())
+       .then(response=> response.json())
        .then(data => dispatch(receivedBias(data)))
   }
+
 }

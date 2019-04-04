@@ -7,10 +7,12 @@ import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
+import CardActionArea from '@material-ui/core/CardActionArea/CardActionArea'
 
 const styles = {
   card: {
-    maxWidth: 345,
+    width: 345,
+    height: 345
   },
   media: {
     height: 140,
@@ -23,18 +25,22 @@ const NewsComponent = props => {
     return (
        <Grid item>
          <Card className={classes.card}>
+           <CardActionArea onClick={() => props.biasFunc(article.ID)}>
             <CardContent>
                 <CardMedia className={classes.media} image={article.URLToImage}/>
                 <Typography variant='caption' gutterBottom>{article.PublicationDate}</Typography>
                 <Typography>{article.Title}</Typography>
             </CardContent>
+           </CardActionArea>
         </Card>
        </Grid>
     )
 }
 
 NewsComponent.propTypes = {
-    article:PropTypes.object
+    article:PropTypes.object,
+    classes: PropTypes.object,
+    biasFunc: PropTypes.func
 }
 
 export default withStyles(styles)(NewsComponent)

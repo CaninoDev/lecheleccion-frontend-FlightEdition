@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid'
 import { connect } from 'react-redux'
 import { NewsComponent } from 'news'
 import { fetchNews } from 'actions'
+import { fetchBias } from 'actions'
 
 class NewsContainer extends Component {
   componentDidMount() {

@@ -17,7 +17,7 @@ class NewsContainer extends Component {
     return (
         <React.Fragment>
           <Grid container spacing={16}>
-          { (!this.props.loading) && articles.map(article => <NewsComponent article={article} key={article.ID} />) }
+          { (!this.props.loading) && articles.map(article => <NewsComponent biasFunc={this.props.fetchBias} article={article} key={article.ID} />) }
           </Grid>
         </React.Fragment>
     )
@@ -30,7 +30,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchNews: () => dispatch(fetchNews())
+  fetchNews: () => dispatch(fetchNews()),
+  fetchBias: (articleID) => dispatch(fetchBias(articleID))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer)
@@ -41,5 +42,6 @@ NewsContainer.propTypes = {
      PropTypes.object
      ]),
   loading: PropTypes.bool,
-  fetchNews: PropTypes.func
+  fetchNews: PropTypes.func,
+  fetchBias: PropTypes.func
 }

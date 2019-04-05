@@ -1,4 +1,4 @@
-# Lecheleccion FLIGHT EDITION
+# Lechelección FLIGHT EDITION
 ## Purpose
 This is an exploration of different frontend javascript frameworks (React, VueJS) and is a refactor of a previously completed [project](https://github.com/CaninoDev/lecheleccion). The accompanying [backend](https://github.com/CaninoDev/lecheleccion-backend-FlightEdition) was also refactored from Ruby on Rails to Go. 
 

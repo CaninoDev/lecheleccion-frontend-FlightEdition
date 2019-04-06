@@ -7,16 +7,23 @@ import BiasComponent from './BiasComponent'
 class BiasContainer extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      loading: this.props.loading,
-      data: this.props.data
-    }
+    this.sanitizeData = this.sanitizeData.bind(this)
+  }
+
+  sanitizeData(data) {
+    let newData
+    newData = Object.keys(data).filter(key => key !== "ID").map(key => {
+      return {subject: key, A: (data[key]*10)}
+    })
+    return newData
   }
 
   render() {
+    const {data} = this.props
+    let reWorkedData = this.sanitizeData(data)
     return (
        <React.Fragment>
-         {!this.props.loading && <BiasComponent data={this.props.data} />}
+         {!this.props.loading && <BiasComponent data={reWorkedData} />}
        </React.Fragment>
     )
   }

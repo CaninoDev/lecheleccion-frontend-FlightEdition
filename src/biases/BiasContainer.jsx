@@ -1,20 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {withStyles} from '@material-ui/core/styles'
 import {connect} from 'react-redux'
 
-import { BiasComponent } from './BiasComponent'
-
-const styles = themes => ({
-  chart: {
-    position: 'fixed',
-    bottom: 0,
-    right: 0,
-    width: '300px',
-    height: '300px',
-    background: '#73AD21'
-  }
-})
+import BiasComponent from './BiasComponent'
 
 class BiasContainer extends Component {
   constructor(props) {
@@ -26,11 +14,10 @@ class BiasContainer extends Component {
   }
 
   render() {
-    const { classes } = this.props
     return (
-       <div className={classes.chart}>
+       <React.Fragment>
          {!this.props.loading && <BiasComponent data={this.props.data} />}
-       </div>
+       </React.Fragment>
     )
   }
 }
@@ -40,10 +27,9 @@ const mapStateToProps = state => ({
   loading: state.biases.loading
 })
 
-export default withStyles(styles)(connect(mapStateToProps)(BiasContainer))
+export default connect(mapStateToProps)(BiasContainer)
 
 BiasContainer.propTypes = {
-  classes: PropTypes.object.isRequired,
   bias: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired

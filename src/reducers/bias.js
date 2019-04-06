@@ -1,4 +1,4 @@
-import { BIAS_FAILURE, BIAS_SUCCESS, BIAS_REQUEST } from 'bias/constants'
+import { BIAS_FAILURE, BIAS_SUCCESS, BIAS_REQUEST } from 'biases/constants'
 
 const initialState = {
   data: {},

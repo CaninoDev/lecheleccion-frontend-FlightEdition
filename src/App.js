@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 import {NewsContainer} from 'news'
-import {BiasContainer} from 'bias'
+import {BiasContainer} from 'biases'
 
 
 class App extends Component {

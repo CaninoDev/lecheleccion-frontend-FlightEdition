@@ -1,4 +1,4 @@
-import {BIAS_FAILURE, BIAS_REQUEST, BIAS_SUCCESS} from 'bias/constants'
+import {BIAS_FAILURE, BIAS_REQUEST, BIAS_SUCCESS} from 'biases/constants'
 import fetch from 'cross-fetch'
 
 function requestBias () {

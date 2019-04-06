@@ -37,7 +37,6 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps)(BiasContainer)
 
 BiasContainer.propTypes = {
-  bias: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   data: PropTypes.object.isRequired
 }

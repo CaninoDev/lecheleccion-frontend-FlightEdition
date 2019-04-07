@@ -1,3 +1,6 @@
 export const BIAS_FAILURE = "bias/FAILURE"
 export const BIAS_REQUEST = "bias/REQUEST"
 export const BIAS_SUCCESS = "bias/SUCCESS"
+export const NEWS_BIAS_FAILURE = "newsBias/FAILURE"
+export const NEWS_BIAS_REQUEST = "newsBias/REQUEST"
+export const NEWS_BIAS_SUCCESS = "newsBias/SUCCESS"

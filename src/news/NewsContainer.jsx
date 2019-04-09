@@ -26,7 +26,7 @@ class NewsContainer extends Component {
 
 const mapStateToProps = state => ({
   loading: state.news.loading,
-  articles: state.news.data
+  articles: state.news.data.Articles
 })
 
 const mapDispatchToProps = dispatch => ({

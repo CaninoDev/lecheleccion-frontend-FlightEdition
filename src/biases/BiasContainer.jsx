@@ -10,23 +10,22 @@ class BiasContainer extends Component {
     this.sanitizeData = this.sanitizeData.bind(this)
   }
 
-  sanitizeData(data) {
-    let newData
-    newData = Object.keys(data).filter(key => key !== "ID").map(key => {
-      return {subject: key, A: (data[key]*10)}
-    })
-    return newData
-  }
+  sanitizeData(biasesData, newsBiasData) {
+    let sanBiasesData
+    let sanNewsBiasData
 
-  serializeData(newsData, newsBiasData) {
-    let allData
-    allData = Object.keys(newsData).map()
+    sanNewsBiasData = Object.keys(newsBiasData).filter(key => key !== "Articles")
+
+    sanBiasesData = Object.keys(biasesData).filter(key => key !== "ID").map(key => {
+      return {subject: key, A: (biasesData[key]*10), B: (sanNewsBiasData[key]*10)}
+    })
+    return sanBiasesData
   }
 
   render() {
-    const {newsData, newsBiasData} = this.props
-    let reWorkedData = this.sanitizeData(newsData)
-    let serializedData = this.serializeData(reWorkedData, newsBiasData)
+    const {biasesData, newsBiasData} = this.props
+
+    let reWorkedData = this.sanitizeData(biasesData, newsBiasData)
     return (
        <React.Fragment>
          {!this.props.biasesLoading && <BiasComponent data={reWorkedData} />}
@@ -36,17 +35,15 @@ class BiasContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  newsData: state.biases.data,
+  biasesData: state.biases.data,
   biasesLoading: state.biases.loading,
-  newsBiasLoading: state.newsBias.loading,
-  newsBiasData: state.newsBias.data
+  newsBiasData: state.news.data
 })
 
 export default connect(mapStateToProps)(BiasContainer)
 
 BiasContainer.propTypes = {
   biasesLoading: PropTypes.bool.isRequired,
-  newsData: PropTypes.object.isRequired,
-  newsBiasLoading: PropTypes.object.isRequired,
+  biasesData: PropTypes.object.isRequired,
   newsBiasData: PropTypes.object.isRequired
 }

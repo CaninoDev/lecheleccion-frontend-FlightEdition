@@ -2,7 +2,13 @@ import { NEWS_REQUEST, NEWS_SUCCESS, NEWS_FAILURE } from 'news/constants'
 
 const initialState = {
     loading: true,
-    data: {},
+    data: {
+        Articles: [],
+        Librt: 1,
+        Grn: 1,
+        Lbrl: 1,
+        Cnsvrt: 1
+    },
     errorMessage: null
 }
 

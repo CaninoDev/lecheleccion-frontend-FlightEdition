@@ -29,11 +29,14 @@ const BiasComponent = props => {
          <RadarChart outerRadius={15} data={data}>
            <PolarGrid/>
            <PolarAngleAxis dataKey="subject"/>
-           <PolarRadiusAxis angle={30} domain={[0, 15]}/>
+           <PolarRadiusAxis angle={30} domain={[0, 10]}/>
            <Radar
-              name="Biases"
               dataKey="A"
               fillOpacity={0.7}
+           />
+           <Radar
+              dataKey="B"
+              fillOpacity={1}
            />
          </RadarChart>
        </ResponsiveContainer>

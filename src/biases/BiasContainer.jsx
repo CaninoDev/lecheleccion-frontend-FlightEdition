@@ -18,25 +18,35 @@ class BiasContainer extends Component {
     return newData
   }
 
+  serializeData(newsData, newsBiasData) {
+    let allData
+    allData = Object.keys(newsData).map()
+  }
+
   render() {
-    const {data} = this.props
-    let reWorkedData = this.sanitizeData(data)
+    const {newsData, newsBiasData} = this.props
+    let reWorkedData = this.sanitizeData(newsData)
+    let serializedData = this.serializeData(reWorkedData, newsBiasData)
     return (
        <React.Fragment>
-         {!this.props.loading && <BiasComponent data={reWorkedData} />}
+         {!this.props.biasesLoading && <BiasComponent data={reWorkedData} />}
        </React.Fragment>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  data: state.biases.data,
-  loading: state.biases.loading
+  newsData: state.biases.data,
+  biasesLoading: state.biases.loading,
+  newsBiasLoading: state.newsBias.loading,
+  newsBiasData: state.newsBias.data
 })
 
 export default connect(mapStateToProps)(BiasContainer)
 
 BiasContainer.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  data: PropTypes.object.isRequired
+  biasesLoading: PropTypes.bool.isRequired,
+  newsData: PropTypes.object.isRequired,
+  newsBiasLoading: PropTypes.object.isRequired,
+  newsBiasData: PropTypes.object.isRequired
 }

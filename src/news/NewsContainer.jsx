@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import { connect } from 'react-redux'
 import { NewsComponent } from 'news'
-import { fetchNews } from 'actions'
-import { fetchBias } from 'actions'
+import { fetchNews, fetchBias } from 'actions'
 
 class NewsContainer extends Component {
   componentDidMount() {
@@ -32,7 +31,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchNews: () => dispatch(fetchNews()),
-  fetchBias: (articleID) => dispatch(fetchBias(articleID))
+  fetchBias: (articleID) => dispatch(fetchBias(articleID)),
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewsContainer)
@@ -44,5 +44,5 @@ NewsContainer.propTypes = {
      ]),
   loading: PropTypes.bool,
   fetchNews: PropTypes.func,
-  fetchBias: PropTypes.func
+  fetchBias: PropTypes.func,
 }

@@ -47,5 +47,6 @@ const BiasComponent = props => {
 export default withStyles(styles)(BiasComponent)
 
 BiasComponent.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 }

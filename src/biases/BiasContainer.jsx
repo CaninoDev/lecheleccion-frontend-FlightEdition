@@ -10,11 +10,10 @@ class BiasContainer extends Component {
     this.sanitizeData = this.sanitizeData.bind(this)
   }
 
+
   sanitizeData(biasesData, newsBiasData) {
     let sanBiasesData
     let sanNewsBiasData
-
-    sanNewsBiasData = Object.keys(newsBiasData).filter(key => key !== "Articles")
 
     sanBiasesData = Object.keys(biasesData).filter(key => key !== "ID").map(key => {
       return {subject: key, A: (biasesData[key]*10), B: (sanNewsBiasData[key]*10)}

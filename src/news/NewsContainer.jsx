@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import Grid from '@material-ui/core/Grid'
 import { connect } from 'react-redux'
-import { NewsComponent } from 'news'
+import { NewsModalContainer } from 'news'
 import { fetchNews, fetchBias } from 'actions'
 
 class NewsContainer extends Component {
@@ -17,7 +17,7 @@ class NewsContainer extends Component {
     return (
         <React.Fragment>
           <Grid container spacing={16}>
-          { (!this.props.loading) && articles.map(article => <NewsComponent biasFunc={this.props.fetchBias} article={article} key={article.ID} />) }
+          { (!this.props.loading) && articles.map(article => <NewsModalContainer biasFunc={this.props.fetchBias} article={article} key={article.ID} />) }
           </Grid>
         </React.Fragment>
     )

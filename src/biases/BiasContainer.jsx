@@ -23,20 +23,20 @@ class BiasContainer extends Component {
   }
 
   render() {
-    const {biasesData, newsBiasData} = this.props
+    const {biasesData, newsBiasData, biasesLoading} = this.props
 
     let reWorkedData = this.sanitizeData(biasesData, newsBiasData)
     return (
        <React.Fragment>
-         {!this.props.biasesLoading && <BiasComponent data={reWorkedData} />}
+         {!biasesLoading && <BiasComponent data={reWorkedData} />}
        </React.Fragment>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  biasesData: state.biases.data,
-  biasesLoading: state.biases.loading,
+  biasesData: state.bias.data,
+  biasesLoading: state.bias.loading,
   newsBiasData: state.news.data
 })
 
